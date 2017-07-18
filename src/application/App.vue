@@ -29,10 +29,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/scss/common/global';
 @import '../assets/scss/common/navbar';
-@import '../assets/scss/common/search';
 
 </style>
 

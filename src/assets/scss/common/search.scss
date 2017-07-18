@@ -1,0 +1,27 @@
+.c-search-header{
+    display: flex;
+    width: 100%;
+    height: 88px;
+    background: #ff0036;
+    .c-header-left,
+    .c-header-right{
+        width: 88px;
+        height: 88px;
+        line-height: 88px;
+        text-align: center;
+        color: #fff;
+    }
+    .c-header-center{
+        flex: 1;
+        height: 88px;
+        padding: 10px 0;
+        >input{
+            height: 100%;
+            width: 100%;
+            border-radius: 6px;
+            border: none;
+            background: #fff;
+            text-indent: 16px;
+        }
+    }
+}
