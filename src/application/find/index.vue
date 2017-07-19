@@ -1,17 +1,17 @@
 <template>
-  <div class="find">
-    <h1>{{ msg }}</h1>
-  </div>
+	<div class="find">
+		<h1>{{ msg }}</h1>
+	</div>
 </template>
 
 <script>
 export default {
-  name: 'find',
-  data () {
-    return {
-      msg: '这里是发现'
-    }
-  }
+	name: 'find',
+	data() {
+		return {
+			msg: '这里是发现'
+		}
+	}
 }
 </script>
 

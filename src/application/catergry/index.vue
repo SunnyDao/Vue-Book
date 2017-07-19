@@ -1,6 +1,9 @@
 <template>
     <div id="">
         {{ msg }}
+		<ul v-for="(n,index) in 100" :key="index">
+			<li>{{ n }}</li>
+		</ul>
     </div>
 </template>
 
