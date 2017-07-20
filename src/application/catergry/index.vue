@@ -1,6 +1,5 @@
 <template>
 	<div class="p-catergry">
-		{{ startY }}
 		<ul>
 			<li v-for="(n,index) in 100" :key="index">{{ n }}</li>
 		</ul>
@@ -10,6 +9,11 @@
 <script>
 export default {
 	name: 'Catergry',
+	computed:{
+		count(){
+			return this.$store.state.count
+		}
+	},
 	data() {
 		return {
 			msg: '分类',

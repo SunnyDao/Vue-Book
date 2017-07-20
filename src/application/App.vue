@@ -17,55 +17,51 @@
 				<router-link :to="{name:'User',params:{id:'000001'}}">我的</router-link>
 			</div>
 		</div>
-		<div class="content" ref="mainPage" v-on:touchmove="onMove($event)" v-on:touchstart="onStart($event)">
+		<div class="content" ref="content" 
+			@scroll="onScrollCon"
+			@touchstart="onTouchStart"
+			@touchmove="onScrollCon">
 			<router-view></router-view>
 		</div>
+		<div class="testData">{{ startY }}======{{moveY}}====={{text}}</div>  
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'app',
-	methods: {
-		onStart: function (event) {
-			this.startY = event.touches ? event.touches[0].screenY : event.screenY;
-		},
-		onMove: function (event) {
-			var el = this.$refs.mainPage;
-			this.startY = event.touches ? event.touches[0].screenY : event.screenY;
-			while (el !== document.body) {
-				var style = window.getComputedStyle(el);
-
-				if (!style) {
-					break;
-				}
-				if (el.nodeName === 'INPUT' && el.getAttribute('type') === 'range') {
-					return;
-				}
-
-				var scrolling = style.getPropertyValue('-webkit-overflow-scrolling');
-				var overflowY = style.getPropertyValue('overflow-y');
-				var height = parseInt(style.getPropertyValue('height'), 10);
-
-				var isScrollable = scrolling === 'touch' && (overflowY === 'auto' || overflowY === 'scroll');
-				var canScroll = el.scrollHeight > el.offsetHeight;
-				
-
-				if (isScrollable && canScroll) {
-					var curY = event.touches ? event.touches[0].screenY : event.screenY;
-
-					var isAtTop = (this.startY <= curY && el.scrollTop === 0);
-					var isAtBottom = (this.startY >= curY && el.scrollHeight - el.scrollTop === height);
-
-					if (isAtTop || isAtBottom) {
-						event.preventDefault();
-					}
-					return;
-				}
-				el = el.parentNode;
-			}
-			//event.preventDefault();
+	data(){
+		return{
+			startY:0,
+			moveY:0,
+			text:''
 		}
+	},
+	methods: {
+		onTouchStart(event){
+			var startY = event.touches ? event.touches[0].clientY : event.clientY;
+			this.startY = parseInt(startY)
+		},
+        onScrollCon:function(event){
+			var nScroll = this.$refs.content.scrollTop,
+				moveY = event.touches ? event.touches[0].clientY : event.clientY;
+			this.moveY = moveY;
+			var isTop = this.startY<=moveY && nScroll===0;//是否在顶部
+			var isBottom = this.startY>=moveY; 
+			this.text=isTop;
+			if(isTop){
+				event.preventDefault();
+			}
+            /* if(!isUp){
+				console.log('向下滑动',nScroll)
+				if(nScroll===0 || nScroll<0){
+					console.log('阻止默认事件')
+					event.preventDefault();
+				}
+			}else{
+				//event.preventDefault();
+			} */
+        }
 	}
 };
 </script>
@@ -74,7 +70,14 @@ export default {
 @import '../assets/scss/common/global';
 @import '../assets/scss/common/layout';
 @import '../assets/scss/common/navbar';
-
+.testData{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background: #fff;
+	border-bottom: 1px solid #ddd;/*no*/
+}
 
 </style>
 
