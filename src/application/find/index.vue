@@ -1,12 +1,17 @@
 <template>
 	<div class="find">
-		<h1>{{ msg }}</h1>
+		<h1>{{ count }}</h1>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'find',
+	computed:{
+		count(){
+			return this.$store.state.count
+		}
+	},
 	data() {
 		return {
 			msg: '这里是发现'

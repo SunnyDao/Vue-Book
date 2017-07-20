@@ -1,5 +1,5 @@
 <template>
-	<div id="app" v-on:touchmove.self.prevent>
+	<div id="app">
 		<div class="bottom-fixed-navbar">
 			<div class="tab-item">
 				<router-link :to="{name:'Home'}">首页</router-link>
@@ -17,7 +17,7 @@
 				<router-link :to="{name:'User',params:{id:'000001'}}">我的</router-link>
 			</div>
 		</div>
-		<div class="content" v-on:touchmove.stop>
+		<div class="content" ref="mainPage" v-on:touchmove="onMove($event)" v-on:touchstart="onStart($event)">
 			<router-view></router-view>
 		</div>
 	</div>
@@ -27,12 +27,44 @@
 export default {
 	name: 'app',
 	methods: {
-		test:function(){
-			console.log('阻止app滑动')
+		onStart: function (event) {
+			this.startY = event.touches ? event.touches[0].screenY : event.screenY;
 		},
-		test2(event){
-			event && event.stopPropagation()
-			console.log('阻止main滑动')
+		onMove: function (event) {
+			var el = this.$refs.mainPage;
+			this.startY = event.touches ? event.touches[0].screenY : event.screenY;
+			while (el !== document.body) {
+				var style = window.getComputedStyle(el);
+
+				if (!style) {
+					break;
+				}
+				if (el.nodeName === 'INPUT' && el.getAttribute('type') === 'range') {
+					return;
+				}
+
+				var scrolling = style.getPropertyValue('-webkit-overflow-scrolling');
+				var overflowY = style.getPropertyValue('overflow-y');
+				var height = parseInt(style.getPropertyValue('height'), 10);
+
+				var isScrollable = scrolling === 'touch' && (overflowY === 'auto' || overflowY === 'scroll');
+				var canScroll = el.scrollHeight > el.offsetHeight;
+				
+
+				if (isScrollable && canScroll) {
+					var curY = event.touches ? event.touches[0].screenY : event.screenY;
+
+					var isAtTop = (this.startY <= curY && el.scrollTop === 0);
+					var isAtBottom = (this.startY >= curY && el.scrollHeight - el.scrollTop === height);
+
+					if (isAtTop || isAtBottom) {
+						event.preventDefault();
+					}
+					return;
+				}
+				el = el.parentNode;
+			}
+			//event.preventDefault();
 		}
 	}
 };
@@ -40,20 +72,9 @@ export default {
 
 <style lang="scss">
 @import '../assets/scss/common/global';
+@import '../assets/scss/common/layout';
 @import '../assets/scss/common/navbar';
 
-body,
-#app {
-	width: 100%;
-	height: 100%;
-}
 
-.content {
-	height: 100%;
-	padding-bottom: 80px;
-	overflow-y: auto;
-	height: 100%;
-	-webkit-overflow-scrolling: touch;
-}
 </style>
 

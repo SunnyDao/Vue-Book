@@ -1,20 +1,21 @@
 <template>
-    <div id="">
-        {{ msg }}
-		<ul v-for="(n,index) in 100" :key="index">
-			<li>{{ n }}</li>
+	<div class="p-catergry">
+		{{ startY }}
+		<ul>
+			<li v-for="(n,index) in 100" :key="index">{{ n }}</li>
 		</ul>
-    </div>
+	</div>
 </template>
 
 <script>
 export default {
-  name: 'Catergry',
-  data() {
-    return {
-      msg: '分类',
-    };
-  },
+	name: 'Catergry',
+	data() {
+		return {
+			msg: '分类',
+			startY: 0
+		};
+	}
 };
 </script>
 

@@ -1,16 +1,7 @@
 .bottom-fixed-navbar{
-    position: fixed;
-    display: flex;
-    display: -webkit-flex;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height:80px;
-    background: #fff;
-    border-top: 1px solid #ddd;/*no*/
     .tab-item{
         flex: 1;
-        line-height: 80px;
+        line-height: 100px;
         text-align: center;
         a{
             display: block;
