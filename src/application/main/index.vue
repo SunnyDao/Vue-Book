@@ -1,5 +1,5 @@
 <template>
-    <div class="main" ref="mainPage" @click="onScroll" @scroll="onScrssoll" v-on:touchmove="onMove($event)" v-on:touchstart="onStart($event)">
+    <div class="main">
         <router-view></router-view>
     </div>
 </template>

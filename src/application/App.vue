@@ -17,51 +17,70 @@
 				<router-link :to="{name:'User',params:{id:'000001'}}">我的</router-link>
 			</div>
 		</div>
-		<div class="content" ref="content" 
-			@scroll="onScrollCon"
-			@touchstart="onTouchStart"
-			@touchmove="onScrollCon">
+		<div class="content" ref="content" @scroll="onScrollCon" @touchstart="onTouchStart" @touchmove="onScrollCon">
 			<router-view></router-view>
 		</div>
-		<div class="testData">{{ startY }}======{{moveY}}====={{text}}</div>  
+		<div class="deBug">
+			<p class="p1">触摸Y坐标： {{ startY | parseint }}</p>
+			<p class="p2">滑动Y坐标： {{ moveY | parseint}}</p>
+			<p class="p2">动态Y坐标： {{ startMoveY | parseint}}</p>
+			<p class="p4">可滚动高度：{{scrollHeight}}</p>
+			<p class="p5">滚动高度：{{ scrollTop }}</p>
+			<p class="p3">提示文字： {{ text}}</p>
+		</div>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'app',
-	data(){
-		return{
-			startY:0,
-			moveY:0,
-			text:''
+	data() {
+		return {
+			startY: 0,
+			startMoveY:0,
+			moveY: 0,
+			text: 'default',
+			scrollHeight: 0,
+			scrollTop:0
+		}
+	},
+	filters: {
+		parseint: function (value) {
+			return parseInt(value)
 		}
 	},
 	methods: {
-		onTouchStart(event){
+		onTouchStart(event) {
 			var startY = event.touches ? event.touches[0].clientY : event.clientY;
-			this.startY = parseInt(startY)
+			this.startY = this.startMoveY = startY
 		},
-        onScrollCon:function(event){
+		onScrollCon (event) {
 			var nScroll = this.$refs.content.scrollTop,
+				scrollHeight = this.$refs.content.scrollHeight,
 				moveY = event.touches ? event.touches[0].clientY : event.clientY;
+			setTimeout(function(){
+				this.startMoveY = moveY;
+			}.bind(this),100)
+
+			var isTop = nScroll === 0;//是否在顶部
+			var isBottom = this.startY >= moveY;
+
 			this.moveY = moveY;
-			var isTop = this.startY<=moveY && nScroll===0;//是否在顶部
-			var isBottom = this.startY>=moveY; 
-			this.text=isTop;
-			if(isTop){
+			this.scrollHeight = scrollHeight;
+			this.scrollTop = nScroll;
+
+			if(nScroll<0){
+				this.text = '不允许滚动'
 				event.preventDefault();
-			}
-            /* if(!isUp){
-				console.log('向下滑动',nScroll)
-				if(nScroll===0 || nScroll<0){
-					console.log('阻止默认事件')
+			}else if(nScroll === 0) {
+				if(this.startMoveY>moveY){
+					this.text = '允许滚动'
+				}else{
+					this.text = '不允许滚动'
 					event.preventDefault();
 				}
-			}else{
-				//event.preventDefault();
-			} */
-        }
+			}
+		}
 	}
 };
 </script>
@@ -70,14 +89,17 @@ export default {
 @import '../assets/scss/common/global';
 @import '../assets/scss/common/layout';
 @import '../assets/scss/common/navbar';
-.testData{
+.deBug {
 	position: fixed;
 	top: 0;
-	width: 100%;
-	height: 50px;
-	background: #fff;
-	border-bottom: 1px solid #ddd;/*no*/
+	right: 0;
+	width: 250px;
+	height: 250px;
+	background: rgba(211, 211, 211, 0.5);
+	/*no*/
+	span {
+		float: right;
+	}
 }
-
 </style>
 

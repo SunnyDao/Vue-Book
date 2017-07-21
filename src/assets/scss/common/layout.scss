@@ -12,7 +12,8 @@ body,
 	-webkit-overflow-scrolling: touch;
 }
 .bottom-fixed-navbar{
-    position: fixed;
+	position: fixed;
+	z-index: 9999;
     display: flex;
     display: -webkit-flex;
     left: 0;
