@@ -1,0 +1,42 @@
+{
+	"banners": [
+		{
+			"id": "000001",
+			"src": "/static/banner/001.jpg"
+		},
+		{
+			"id": "000002",
+			"src": "/static/banner/002.jpg"
+		},
+		{
+			"id": "000003",
+			"src": "/static/banner/003.jpg"
+		}
+	],
+	"navlist": [
+		{
+			"icon": "",
+			"text": "特价书籍"
+		},
+		{
+			"icon": "",
+			"text": "进口书籍"
+		},
+		{
+			"icon": "",
+			"text": "电子书"
+		},
+		{
+			"icon": "",
+			"text": "新书上架"
+		},
+		{
+			"icon": "",
+			"text": "优惠信息"
+		},
+		{
+			"icon": "",
+			"text": "会员中心"
+		}
+	]
+}

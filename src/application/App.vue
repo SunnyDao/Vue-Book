@@ -1,25 +1,6 @@
 <template>
 	<div id="app">
-		<div class="bottom-fixed-navbar">
-			<div class="tab-item">
-				<router-link :to="{name:'Home'}">首页</router-link>
-			</div>
-			<div class="tab-item">
-				<router-link :to="{name:'Catergry'}">分类</router-link>
-			</div>
-			<div class="tab-item">
-				<router-link :to="{name:'Find'}">发现</router-link>
-			</div>
-			<div class="tab-item">
-				<router-link :to="{name:'Cart'}">购物车</router-link>
-			</div>
-			<div class="tab-item">
-				<router-link :to="{name:'User',params:{id:'000001'}}">我的</router-link>
-			</div>
-		</div>
-		<div class="content" ref="content" @scroll="onScrollCon" @touchstart="onTouchStart" @touchmove="onScrollCon">
-			<router-view></router-view>
-		</div>
+		<router-view></router-view>
 		<div class="deBug">
 			<p class="p1">触摸Y坐标： {{ startY | parseint }}</p>
 			<p class="p2">滑动Y坐标： {{ moveY | parseint}}</p>
@@ -50,37 +31,7 @@ export default {
 		}
 	},
 	methods: {
-		onTouchStart(event) {
-			var startY = event.touches ? event.touches[0].clientY : event.clientY;
-			this.startY = this.startMoveY = startY
-		},
-		onScrollCon (event) {
-			var nScroll = this.$refs.content.scrollTop,
-				scrollHeight = this.$refs.content.scrollHeight,
-				moveY = event.touches ? event.touches[0].clientY : event.clientY;
-			setTimeout(function(){
-				this.startMoveY = moveY;
-			}.bind(this),100)
-
-			var isTop = nScroll === 0;//是否在顶部
-			var isBottom = this.startY >= moveY;
-
-			this.moveY = moveY;
-			this.scrollHeight = scrollHeight;
-			this.scrollTop = nScroll;
-
-			if(nScroll<0){
-				this.text = '不允许滚动'
-				event.preventDefault();
-			}else if(nScroll === 0) {
-				if(this.startMoveY>moveY){
-					this.text = '允许滚动'
-				}else{
-					this.text = '不允许滚动'
-					event.preventDefault();
-				}
-			}
-		}
+		
 	}
 };
 </script>

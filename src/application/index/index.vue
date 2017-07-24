@@ -1,7 +1,8 @@
 <template>
 	<div id="">
 		<search-component></search-component>
-		<swiper-conponent></swiper-conponent>
+		<status-component :status="{num:'3'}"></status-component>
+		<swiper-component :bannerslist="banners"></swiper-component>
 		<div class="p-index-nav">
 			<div class="p-nav-item" v-for="(item,index) in navlist" :key="index">
 				<div class="p-nav-icon"><img :src="item.icon"></div>
@@ -33,35 +34,29 @@
 <script>
 import Header from '../../components/search'
 import Swiper from '../../components/swiper'
+import status from '../../components/pagestatus.vue'
 export default {
 	name: 'Home',
 	components: {
 		'search-component': Header,
-		'swiper-conponent': Swiper
+		'swiper-component': Swiper,
+		'status-component': status
 	},
 	data() {
 		return {
-			navlist: [{
-				icon:'',
-				text:'特价书籍'
-			},{
-				icon:'',
-				text:'进口书籍'
-			},{
-				icon:'',
-				text:'电子书'
-			},{
-				icon:'',
-				text:'新书上架'
-			},{
-				icon:'',
-				text:'优惠信息'
-			},{
-				icon:'',
-				text:'会员中心'
-			}],
+			banners:[],
+			navlist: [],
 		};
 	},
+	created(){
+		this.$http.get('/api/index')
+		.then((res)=>{
+			this.banners = res.banners;
+			this.navlist = res.navlist;
+		},(err)=>{
+			console.log(err)
+		})
+	}
 };
 </script>
 
