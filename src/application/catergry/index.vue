@@ -1,8 +1,18 @@
 <template>
 	<div class="p-catergry">
-		<ul>
-			<li v-for="(n,index) in 100" :key="index">{{ n }}</li>
-		</ul>
+		<div class="p-catergry-left">
+			
+		</div>
+		<div class="p-catergry-right">
+			<div class="w-banner-right"></div>
+			<div class="w-catergry-md">
+				<h3></h3>
+				<ul v-for="(item,index) in 4" :key="index" :class="'w-catergry-item'+index">
+					<li v-for="(item,index) in items" :key="index" :class="'item-'+index">{{item.name}}</li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
 </template>
 
@@ -11,18 +21,37 @@ export default {
 	name: 'Catergry',
 	computed:{
 		count(){
-			return this.$store.state.count
 		}
 	},
 	data() {
 		return {
-			msg: '分类',
-			startY: 0
+			items:[{
+				name:'1'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			},{
+				name:'2'
+			}]
 		};
 	}
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
+

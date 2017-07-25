@@ -1,5 +1,5 @@
 <template>
-	<div id="">
+	<div class="p-index">
 		<search-component></search-component>
 		<swiper-component :bannerslist="banners"></swiper-component>
 		<div class="p-index-nav">
