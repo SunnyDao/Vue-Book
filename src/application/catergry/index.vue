@@ -7,7 +7,7 @@
 			<div class="w-banner-right"></div>
 			<div class="w-catergry-md">
 				<h3></h3>
-				<ul v-for="(item,index) in 4" :key="index" :class="'w-catergry-item'+index">
+				<ul v-for="(item,index) in 4" :key="index" :class="'w-catergry-item'+index"><!-- 这里如果直接写index会不渲染，说明class必须是一个字符串 -->
 					<li v-for="(item,index) in items" :key="index" :class="'item-'+index">{{item.name}}</li>
 				</ul>
 			</div>
