@@ -1,7 +1,6 @@
 <template>
 	<div id="">
 		<search-component></search-component>
-		<status-component :status="{num:'3'}"></status-component>
 		<swiper-component :bannerslist="banners"></swiper-component>
 		<div class="p-index-nav">
 			<div class="p-nav-item" v-for="(item,index) in navlist" :key="index">
@@ -34,25 +33,23 @@
 <script>
 import Header from '../../components/search'
 import Swiper from '../../components/swiper'
-import status from '../../components/pagestatus.vue'
 export default {
 	name: 'Home',
 	components: {
 		'search-component': Header,
-		'swiper-component': Swiper,
-		'status-component': status
+		'swiper-component': Swiper
 	},
 	data() {
 		return {
-			banners:[],
+			banners: [],
 			navlist: [],
 		};
 	},
 	created(){
-		this.$http.get('/api/index')
+		this.$http.get('/mock/index.json')
 		.then((res)=>{
-			this.banners = res.banners;
-			this.navlist = res.navlist;
+			this.banners = res.body.banners;
+			this.navlist = res.body.navlist;
 		},(err)=>{
 			console.log(err)
 		})

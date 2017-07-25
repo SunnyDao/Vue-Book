@@ -65,6 +65,10 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
+// serve mock path
+var mockPath = path.posix.join(config.dev.mockPublicPath, config.dev.mockSubDirectory)
+app.use(mockPath,express.static('./src/mock'))
+
 var uri = 'http://localhost:' + port
 
 var _resolve
