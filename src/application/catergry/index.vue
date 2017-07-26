@@ -10,13 +10,19 @@
 		</div>
 		<div class="p-catergry-right">
 			<div class="c-scroll-box">
-				<div class="w-banner-right"></div>
+				<div class="w-banner-right">
+					<img src="https://m.360buyimg.com/mobilecms/s528x180_jfs/t1099/96/294528099/21413/1cb6c44f/55137bdbNfdce143e.jpg">
+				</div>
 				<div class="w-catergry-md">
-					<h3></h3>
-					<ul v-for="(item,index) in 4" :key="index" :class="'w-catergry-item'+index">
+					<h3>电脑整机</h3>
+					<ul class="w-catergry-group">
 						<!-- 这里如果直接写index会不渲染，说明class必须是一个字符串 -->
-						<li v-for="(item,index) in items" :key="index" :class="'item-'+index">{{item.name}}</li>
+						<li v-for="(item,index) in items" :key="index" :class="'item-'+index">
+							<p><img src="https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"></p>
+							<p>{{item.name}}</p>
+						</li>
 					</ul>
+					<h3>电脑配件</h3>
 				</div>
 			</div>
 			<div class="c-loadfail-box"></div>
@@ -42,10 +48,33 @@
 
 .p-catergry-right {
 	width: 100%;
+	height: 100%;
 	padding-left: 150px;
-	background: #d0d0d0;
+	background: #f0f0f0;
 	.w-banner-right{
-
+		padding: 20px;
+		img{
+			display: block;
+			width: 100%;
+		}
+	}
+	.w-catergry-md{
+		padding: 20px;
+		h3{
+			font-size: 28px;/*px*/
+			line-height: 40px;
+			margin-bottom: 20px;
+		}
+		ul.w-catergry-group{
+			display: flex;
+			flex-wrap:wrap; 
+			padding-bottom: 16px;
+			background: #fff;
+			li{
+				width: 33.33%;
+				text-align: center;
+			}
+		}
 	}
 }
 </style>
@@ -60,25 +89,25 @@ export default {
 	data() {
 		return {
 			items: [{
-				name: '1'
+				name: '笔记本'
 			}, {
-				name: '2'
+				name: '游戏本'
 			}, {
-				name: '2'
+				name: '台式机'
 			}, {
-				name: '2'
+				name: '一体机'
 			}, {
-				name: '2'
+				name: '轻薄本'
 			}, {
-				name: '2'
+				name: '商用台式机'
 			}, {
-				name: '2'
+				name: '游戏台式机'
 			}, {
-				name: '2'
+				name: '平板电脑'
 			}, {
-				name: '2'
+				name: '二合一平板'
 			}, {
-				name: '2'
+				name: '服务器/工作站'
 			}]
 		};
 	}
