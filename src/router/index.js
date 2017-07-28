@@ -8,6 +8,7 @@ import Find from '@/application/find'
 import Cart from '@/application/cart'
 import User from '@/application/user'
 import Detail from '@/application/detail'
+import Goodslist from '@/application/goodslist'
 
 Vue.use(Router)
 
@@ -25,23 +26,25 @@ export default new Router({
 		name: '',//'Main',此处不需要写名字
 		path: '/',
 		component: Main,
-		children: [{
-			path: '',
-			name: 'Home',
-			component: Home
-		}, {
-			path: 'catergry',
-			name: 'Catergry',
-			component: Catergry
-		}, {
-			path: 'find',
-			name: 'Find',
-			component: Find
-		}, {
-			path: 'user/:id',
-			name: 'User',
-			component: User
-		}]
+		children: [
+			{
+				path: '',
+				name: 'Home',
+				component: Home
+			}, {
+				path: 'catergry',
+				name: 'Catergry',
+				component: Catergry
+			}, {
+				path: 'find',
+				name: 'Find',
+				component: Find
+			}, {
+				path: 'user/:id',
+				name: 'User',
+				component: User
+			}
+		]
 	}, {
 		path: '/detail?:id',
 		name: 'Detail',
@@ -50,5 +53,9 @@ export default new Router({
 		path: '/cart',
 		name: 'Cart',
 		component: Cart
+	}, {
+		path: '/goodslist/:goodslist_id',
+		name: 'Goodslist',
+		component: Goodslist
 	}]
 })

@@ -33,7 +33,7 @@ export default {
 	//不能写在create() 因为create里面dom还没有渲染完成
 	mounted() {
 		new Swiper(this.$refs.slider, {
-			loop: true,
+			//loop: true,
 		})
 	}
 }

@@ -47,7 +47,7 @@ export default {
 	width: 250px;
 	height: 250px;
 	background: rgba(211, 211, 211, 0.5);
-	/*no*/
+	display: none;
 	span {
 		float: right;
 	}

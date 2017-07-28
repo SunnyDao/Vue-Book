@@ -18,8 +18,10 @@
 					<ul class="w-catergry-group">
 						<!-- 这里如果直接写index会不渲染，说明class必须是一个字符串 -->
 						<li v-for="(item,index) in items" :key="index" :class="'item-'+index">
-							<p><img src="https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"></p>
-							<p>{{item.name}}</p>
+							<router-link :to="{name:'Goodslist',params:{goodslist_id:index}}">
+								<img src="https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg">
+								<p class="item-text">{{item.name}}</p>
+							</router-link>
 						</li>
 					</ul>
 					<h3>电脑配件</h3>
@@ -27,12 +29,11 @@
 			</div>
 			<div class="c-loadfail-box"></div>
 		</div>
-	
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.p-catergry{
+.p-catergry {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -41,38 +42,72 @@
 	float: left;
 	width: 150px;
 	height: auto;
-    min-height: 100%;
+	min-height: 100%;
 	overflow-y: auto;
 	background: #fff;
 }
-
 .p-catergry-right {
 	width: 100%;
 	height: 100%;
 	padding-left: 150px;
 	background: #f0f0f0;
-	.w-banner-right{
+	.w-banner-right {
 		padding: 20px;
-		img{
+		img {
 			display: block;
 			width: 100%;
 		}
 	}
-	.w-catergry-md{
+	.w-catergry-md {
 		padding: 20px;
-		h3{
-			font-size: 28px;/*px*/
+		h3 {
+			font-size: 28px; /*px*/
 			line-height: 40px;
 			margin-bottom: 20px;
 		}
-		ul.w-catergry-group{
+		ul.w-catergry-group {
 			display: flex;
-			flex-wrap:wrap; 
-			padding-bottom: 16px;
+			flex-wrap: wrap;
+			padding: 10px 10px;
 			background: #fff;
-			li{
+			li {
+				position: relative;
 				width: 33.33%;
+				vertical-align: middle;
 				text-align: center;
+				&:before {
+					content: "";
+					display: inline-block;
+					padding-bottom: 100%;
+					width: 0.1px;
+					vertical-align: middle;
+				}
+				a{
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					img {
+						display: block;
+						width: 100px;
+						height: 100px;
+						margin: 0 auto;
+					}
+					>p {
+						width: 100%;
+						height: 60px;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-size: 20px; /*px*/
+						color: #686868;
+						display: box;
+						line-clamp: 2;
+						box-orient: vertical;
+						box-align: center;
+						word-break: break-all;
+					}
+				}
 			}
 		}
 	}
