@@ -2,7 +2,9 @@
     .tab-item{
         flex: 1;
         line-height: 100px;
-        text-align: center;
+		text-align: center;
+		background: url('../../svg/home.svg') no-repeat;
+  		background-size: contain;
         a{
             display: block;
         }
