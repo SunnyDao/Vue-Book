@@ -3,10 +3,13 @@
         flex: 1;
         line-height: 100px;
 		text-align: center;
-		background: url('../../svg/home.svg') no-repeat;
-  		background-size: contain;
+		background: url('../assets/svg/home.svg') no-repeat center 5px;
+  		background-size: 35%;
         a{
-            display: block;
+			display: block;
+			padding-top: 70px;
+			line-height: 20px;
+			text-decoration: none;
         }
     }
 }

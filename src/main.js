@@ -8,8 +8,6 @@ import router from './router'
 
 import App from './application/App'
 
-import '@/assets/svg/home.svg';
-
 Vue.config.productionTip = false
 
 Vue.use(VueResource);
