@@ -1,7 +1,7 @@
 <template>
 	<div class="p-index">
 		<search-component></search-component>
-		<swiper-component :bannerslist="banners"></swiper-component>
+		<swiper-component :bannerslist="banners" ref="swiper"></swiper-component>
 		<div class="p-index-nav">
 			<div class="p-nav-item" v-for="(item,index) in navlist" :key="index">
 				<div class="p-nav-icon"><img :src="item.icon"></div>
@@ -50,7 +50,11 @@ export default {
 		.then((res)=>{
 			this.banners = res.body.banners;
 			this.navlist = res.body.navlist;
-		},(err)=>{
+		})
+		.then(()=>{
+			this.$refs.swiper.initSwiper();
+		})
+		.catch((err)=>{
 			console.log(err)
 		})
 	}
