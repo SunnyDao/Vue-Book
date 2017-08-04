@@ -1,17 +1,104 @@
 {
-	"hotsale": {
-		"id": "1000000",
-		"name":"热卖商品"
-	},
-	"computer":[{
-		"id":"2000000",
-		"name":"电脑整机",
-		"goodsList":[{
-			
-		},{
-
-		}]
-	},{
-
-	}]
+	"categrylist": [
+		{
+			"id": 999999,
+			"name": "热卖商品",
+			"bannerSrc": "https://m.360buyimg.com/mobilecms/s528x180_jfs/t1099/96/294528099/21413/1cb6c44f/55137bdbNfdce143e.jpg",
+			"list": [
+				{
+					"id": 1110000,
+					"name": "武侠小说",
+					"imgSrc": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+				},
+				{
+					"id": 1120000,
+					"name": "玄幻小说"
+				},
+				{
+					"id": 1130000,
+					"name": "仙侠小说",
+					"imgSrc": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+				},
+				{
+					"id": 1140000,
+					"name": "历史小说"
+				},
+				{
+					"id": 1150000,
+					"name": "都市小说",
+					"imgSrc": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+				}
+			]
+		},
+		{
+			"id": 1000000,
+			"name": "文学小说",
+			"bannerSrc": "https://m.360buyimg.com/mobilecms/s528x180_jfs/t1099/96/294528099/21413/1cb6c44f/55137bdbNfdce143e.jpg",
+			"list": [
+				{
+					"id": 1100000,
+					"name": "通俗小说",
+					"goodsList": [
+						{
+							"id": 1110000,
+							"name": "武侠小说",
+							"imgSrc": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+						},
+						{
+							"id": 1120000,
+							"name": "玄幻小说"
+						},
+						{
+							"id": 1130000,
+							"name": "仙侠小说",
+							"imgSrc": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+						},
+						{
+							"id": 1140000,
+							"name": "历史小说"
+						},
+						{
+							"id": 1150000,
+							"name": "都市小说",
+							"imgSrc": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+						},
+						{
+							"id": 1160000,
+							"name": "言情小说"
+						}
+					]
+				},
+				{
+					"id": 1200000,
+					"name": "装逼小说",
+					"goodsList": [
+						{
+							"id": 1210000,
+							"name": "散文随笔"
+						},
+						{
+							"id": 1220000,
+							"name": "世界名著"
+						},
+						{
+							"id": 1220000,
+							"name": "诗歌词曲"
+						},
+						{
+							"id": 1220000,
+							"name": "外国小说"
+						},
+						{
+							"id": 1220000,
+							"name": "科幻小说"
+						},
+						{
+							"id": 1220000,
+							"name": "悬疑推理"
+						}
+					]
+				}
+			]
+		}
+	]
 }

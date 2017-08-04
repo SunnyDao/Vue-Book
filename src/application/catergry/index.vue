@@ -2,35 +2,64 @@
 	<div class="p-catergry">
 		<div class="p-catergry-left">
 			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+				<li v-for="(item,index) in leftlist" :key="index">
+					{{item}}
+				</li>
 			</ul>
 		</div>
 		<div class="p-catergry-right">
 			<div class="c-scroll-box">
 				<div class="w-banner-right">
-					<img src="https://m.360buyimg.com/mobilecms/s528x180_jfs/t1099/96/294528099/21413/1cb6c44f/55137bdbNfdce143e.jpg">
+					<img :src="currentlist.bannerSrc">
 				</div>
-				<div class="w-catergry-md">
-					<h3>电脑整机</h3>
-					<ul class="w-catergry-group">
-						<!-- 这里如果直接写index会不渲染，说明class必须是一个字符串 -->
-						<li v-for="(item,index) in items" :key="index" :class="'item-'+index">
-							<router-link :to="{name:'Goodslist',params:{goodslist_id:index}}">
-								<img src="https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg">
-								<p class="item-text">{{item.name}}</p>
-							</router-link>
-						</li>
-					</ul>
-					<h3>电脑配件</h3>
-				</div>
+				<catergry-component :itemData="currentlist.list"></catergry-component>
+				
 			</div>
 			<div class="c-loadfail-box"></div>
 		</div>
 	</div>
 </template>
+
+<script>
+import catergry from '~/catergry/item'
+export default {
+	name: 'Catergry',
+	data() {
+		return {
+			leftlist:[],
+			rightlist:[],
+			currentlist:{}
+		};
+	},
+	computed: {
+		count() {
+		}
+	},
+	components:{
+		'catergry-component': catergry,
+	},
+	created(){
+		this.$http.get('/mock/catergry.json')
+		.then((res)=>{
+			this.leftlist = res.body.categrylist.map((item)=>{
+				return item.name;
+			});
+			this.rightlist = res.body.categrylist;
+			this.currentlist = res.body.categrylist.filter((item)=>{
+				return item.id === 1000000;
+			})[0]
+			//debugger;
+			//this.navlist = res.body.navlist;
+		})
+		.then(()=>{
+			//this.$refs.swiper.initSwiper();
+		})
+		.catch((err)=>{
+			console.log(err)
+		})
+	}
+};
+</script>
 
 <style lang="scss" scoped>
 .p-catergry {
@@ -45,6 +74,14 @@
 	min-height: 100%;
 	overflow-y: auto;
 	background: #fff;
+	ul{
+		li{
+			height: 80px;
+			line-height: 80px;
+			text-align: center;
+			border-bottom: 1px solid #e5e5e5;
+		}
+	}
 }
 .p-catergry-right {
 	width: 100%;
@@ -113,39 +150,3 @@
 	}
 }
 </style>
-
-<script>
-export default {
-	name: 'Catergry',
-	computed: {
-		count() {
-		}
-	},
-	data() {
-		return {
-			items: [{
-				name: '笔记本'
-			}, {
-				name: '游戏本'
-			}, {
-				name: '台式机'
-			}, {
-				name: '一体机'
-			}, {
-				name: '轻薄本'
-			}, {
-				name: '商用台式机'
-			}, {
-				name: '游戏台式机'
-			}, {
-				name: '平板电脑'
-			}, {
-				name: '二合一平板'
-			}, {
-				name: '服务器/工作站'
-			}]
-		};
-	}
-};
-</script>
-
