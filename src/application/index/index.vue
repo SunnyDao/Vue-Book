@@ -48,8 +48,13 @@ export default {
 	created(){
 		this.$http.get('/mock/index.json')
 		.then((res)=>{
-			this.banners = res.body.banners;
-			this.navlist = res.body.navlist;
+			setTimeout(()=>{
+				console.log('延迟3秒渲染')
+				this.banners = res.body.banners;
+				this.navlist = res.body.navlist;
+				this.$store.state.pageStatus.Home = 1;
+				this.$store.commit('HIDE_LOADING')
+			},3000)
 		})
 		.then(()=>{
 			this.$refs.swiper.initSwiper();

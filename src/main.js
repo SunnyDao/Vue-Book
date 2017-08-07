@@ -14,8 +14,9 @@ Vue.config.productionTip = false
 Vue.use(VueResource);
 Vue.use(VueLazyload)
 
+
 /* eslint-disable no-new */
-new Vue({
+const vm = new Vue({
 	el: '#app',
 	store,
 	router,

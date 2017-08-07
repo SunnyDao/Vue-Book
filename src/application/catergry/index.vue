@@ -48,11 +48,10 @@ export default {
 			this.currentlist = res.body.categrylist.filter((item)=>{
 				return item.id === 1000000;
 			})[0]
-			//debugger;
-			//this.navlist = res.body.navlist;
+			console.log('get分类数据')
 		})
 		.then(()=>{
-			//this.$refs.swiper.initSwiper();
+			
 		})
 		.catch((err)=>{
 			console.log(err)

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import store from '@/store'
+
 import Main from '@/application/main'
 import Home from '@/application/index'
 import Catergry from '@/application/catergry'
@@ -12,7 +14,7 @@ import Goodslist from '@/application/goodslist'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
 	mode: 'history',
 	linkActiveClass: 'active',
 	routes: [{
@@ -58,4 +60,15 @@ export default new Router({
 		name: 'Goodslist',
 		component: Goodslist
 	}]
+});
+
+router.beforeEach((to, from, next) => {
+	const pageName = to.name;
+	store.state.pageStatus[pageName]
+	? (store.commit('HIDE_LOADING'))
+	: (store.commit('SHOW_LOADING'));
+	console.log(store.state.pageStatus[pageName])
+	next();
 })
+
+export default router;
