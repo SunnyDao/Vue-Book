@@ -21,41 +21,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import catergry from '~/catergry/item'
 export default {
 	name: 'Catergry',
 	data() {
 		return {
-			leftlist:[],
-			rightlist:[],
-			currentlist:{}
 		};
 	},
-	computed: {
-		count() {
-		}
-	},
+	computed: mapState({
+		leftlist: state => state.Catergry.leftlist,
+		rightlist: state => state.Catergry.rightlist,
+		currentlist: state => state.Catergry.currentlist,
+	}),
 	components:{
 		'catergry-component': catergry,
 	},
 	created(){
-		this.$http.get('/mock/catergry.json')
-		.then((res)=>{
-			this.leftlist = res.body.categrylist.map((item)=>{
-				return item.name;
-			});
-			this.rightlist = res.body.categrylist;
-			this.currentlist = res.body.categrylist.filter((item)=>{
-				return item.id === 1000000;
-			})[0]
-			console.log('get分类数据')
-		})
-		.then(()=>{
-			
-		})
-		.catch((err)=>{
-			console.log(err)
-		})
+		this.$store.dispatch('CATERGRY_GETINITDATA_ACTION');
 	}
 };
 </script>

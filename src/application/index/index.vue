@@ -56,7 +56,6 @@ export default {
 	},
 	created(){
 		this.$store.dispatch('HOME_GETINITDATA_ACTION');
-		
 	}
 };
 </script>

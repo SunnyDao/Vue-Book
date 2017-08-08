@@ -6,6 +6,7 @@ import * as getters from './getters'
 
 import Page from './modules/page'
 import Home from './modules/home'
+import Catergry from './modules/catergry'
 
 import createLogger from '../plugins/logger'
 
@@ -16,7 +17,8 @@ const debug = process.env.NODE_ENV !== 'production' ? [createLogger()] : []
 export default new Vuex.Store({
 	modules: {
 		Page,
-		Home
+		Home,
+		Catergry
 	},
 	strict: debug,
 	plugins: debug

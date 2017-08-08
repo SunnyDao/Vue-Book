@@ -64,6 +64,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
 	const pageName = to.name;
+	
 	store.state[pageName].pageStatus
 	? (store.commit('HIDE_LOADING'))
 	: (store.commit('SHOW_LOADING'));
