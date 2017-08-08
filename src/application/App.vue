@@ -18,7 +18,7 @@ export default {
 	},
 	computed: {
 		isShowLoading() {
-			return this.$store.state.page.isShowLoading
+			return this.$store.state.Page.isShowLoading
 		}
 	},
 	filters: {

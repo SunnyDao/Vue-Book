@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 
-import page from './modules/page'
+import Page from './modules/page'
+import Home from './modules/home'
 
 import createLogger from '../plugins/logger'
 
@@ -14,7 +15,8 @@ const debug = process.env.NODE_ENV !== 'production' ? [createLogger()] : []
 
 export default new Vuex.Store({
 	modules: {
-		page
+		Page,
+		Home
 	},
 	strict: debug,
 	plugins: debug

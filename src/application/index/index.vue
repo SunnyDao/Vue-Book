@@ -41,33 +41,22 @@ export default {
 	},
 	data() {
 		return {
-			banners: [],
-			navlist: [],
 		};
 	},
+	computed: {
+		banners() {
+			return this.$store.state.Home.banners
+		},
+		navlist() {
+			return this.$store.state.Home.navlist
+		},
+	},
+	mouted(){
+		this.$refs.swiper.initSwiper();
+	},
 	created(){
-		const start = new Date().getTime();
-		this.$http.get('/mock/index.json')
-		.then((res)=>{
-			this.banners = res.body.banners;
-			this.navlist = res.body.navlist;
-		})
-		.then(()=>{
-			this.$refs.swiper.initSwiper();
-		})
-		.then(()=>{
-			const now = new Date().getTime();
-			const timer = now-start<1000
-			? 999+start-now
-			: 0;
-			setTimeout(()=>{
-				this.$store.state.page.pageStatus.Home = 1;
-				this.$store.commit('HIDE_LOADING')
-			},timer)
-		})
-		.catch((err)=>{
-			console.log(err)
-		})
+		this.$store.dispatch('HOME_GETINITDATA_ACTION');
+		
 	}
 };
 </script>
