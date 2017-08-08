@@ -64,10 +64,10 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
 	const pageName = to.name;
-	store.state.pageStatus[pageName]
+	store.state.page.pageStatus[pageName]
 	? (store.commit('HIDE_LOADING'))
 	: (store.commit('SHOW_LOADING'));
-	console.log(store.state.pageStatus[pageName])
+	
 	next();
 })
 

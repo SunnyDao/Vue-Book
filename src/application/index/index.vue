@@ -46,18 +46,24 @@ export default {
 		};
 	},
 	created(){
+		const start = new Date().getTime();
 		this.$http.get('/mock/index.json')
 		.then((res)=>{
-			setTimeout(()=>{
-				console.log('延迟3秒渲染')
-				this.banners = res.body.banners;
-				this.navlist = res.body.navlist;
-				this.$store.state.pageStatus.Home = 1;
-				this.$store.commit('HIDE_LOADING')
-			},3000)
+			this.banners = res.body.banners;
+			this.navlist = res.body.navlist;
 		})
 		.then(()=>{
 			this.$refs.swiper.initSwiper();
+		})
+		.then(()=>{
+			const now = new Date().getTime();
+			const timer = now-start<1000
+			? 999+start-now
+			: 0;
+			setTimeout(()=>{
+				this.$store.state.page.pageStatus.Home = 1;
+				this.$store.commit('HIDE_LOADING')
+			},timer)
 		})
 		.catch((err)=>{
 			console.log(err)
