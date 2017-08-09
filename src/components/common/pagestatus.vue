@@ -1,5 +1,5 @@
 <template>
-	<div class="c-page-status">
+	<div class="c-page-status c-main-pagestatus">
 		<img :src="loadingSrc">
 		<p>加载中...</p>
 		<slot></slot>
@@ -33,8 +33,8 @@ export default {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100%;
-	background: #f0f0f0;
+	//height: 100%;
+	background: rgba(255, 255, 255, 1);
 	text-align: center;
 	line-height: 1;
 	font-size: 32px;/*px*/
@@ -44,5 +44,8 @@ export default {
 		width: 140px;
 		margin-bottom: 20px;
 	}
+}
+.c-main-pagestatus{
+	bottom: 100px;
 }
 </style>

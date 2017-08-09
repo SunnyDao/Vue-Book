@@ -18,7 +18,7 @@ export default {
 	},
 	computed: {
 		isShowLoading() {
-			return this.$store.state.Page.isShowLoading
+			return false
 		}
 	},
 	filters: {
@@ -35,6 +35,6 @@ export default {
 <style lang="scss">
 @import '../assets/scss/common/global';
 @import '../assets/scss/common/layout';
-@import '../assets/scss/common/navbar';
+//@import '../assets/scss/common/navbar';
 </style>
 

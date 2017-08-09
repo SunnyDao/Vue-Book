@@ -29,9 +29,11 @@ export default {
 <style lang="scss" scoped>
 .w-catergry-md {
 	padding: 20px;
+	>div{
+		margin-bottom: 20px;
+	}
 	h3 {
-		font-size: 28px;
-		/*px*/
+		font-size: 28px;/*px*/
 		line-height: 40px;
 		margin-bottom: 20px;
 	}
@@ -69,8 +71,7 @@ export default {
 					height: 60px;
 					overflow: hidden;
 					text-overflow: ellipsis;
-					font-size: 20px;
-					/*px*/
+					font-size: 20px;/*px*/
 					color: #686868;
 					display: box;
 					line-clamp: 2;

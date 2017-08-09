@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import Header from '../../components/search'
-import Swiper from '../../components/swiper'
+import Header from '../../components/common/search'
+import Swiper from '../../components/common/swiper'
 export default {
 	name: 'Home',
 	components: {
@@ -51,8 +51,10 @@ export default {
 			return this.$store.state.Home.navlist
 		},
 	},
-	mouted(){
-		this.$refs.swiper.initSwiper();
+	mounted(){
+		setTimeout(()=>{
+			this.$refs.swiper.initSwiper();
+		},300)
 	},
 	created(){
 		this.$store.dispatch('HOME_GETINITDATA_ACTION');

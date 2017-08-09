@@ -13,7 +13,6 @@
 					<img :src="currentlist.bannerSrc">
 				</div>
 				<catergry-component :itemData="currentlist.list"></catergry-component>
-				
 			</div>
 			<div class="c-loadfail-box"></div>
 		</div>
@@ -75,59 +74,6 @@ export default {
 		img {
 			display: block;
 			width: 100%;
-		}
-	}
-	.w-catergry-md {
-		padding: 20px;
-		h3 {
-			font-size: 28px; /*px*/
-			line-height: 40px;
-			margin-bottom: 20px;
-		}
-		ul.w-catergry-group {
-			display: flex;
-			flex-wrap: wrap;
-			padding: 10px 10px;
-			background: #fff;
-			li {
-				position: relative;
-				width: 33.33%;
-				vertical-align: middle;
-				text-align: center;
-				&:before {
-					content: "";
-					display: inline-block;
-					padding-bottom: 100%;
-					width: 0.1px;
-					vertical-align: middle;
-				}
-				a{
-					position: absolute;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
-					img {
-						display: block;
-						width: 100px;
-						height: 100px;
-						margin: 0 auto;
-					}
-					>p {
-						width: 100%;
-						height: 60px;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						font-size: 20px; /*px*/
-						color: #686868;
-						display: box;
-						line-clamp: 2;
-						box-orient: vertical;
-						box-align: center;
-						word-break: break-all;
-					}
-				}
-			}
 		}
 	}
 }

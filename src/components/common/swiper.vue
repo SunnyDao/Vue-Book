@@ -18,7 +18,7 @@ import Swiper from 'swiper';
 import 'swiper/dist/css/swiper.css';
 
 export default {
-	name: 'search-component',
+	name: 'swiper-component',
 	props:{
 		bannerslist:{
 			type:Array,
