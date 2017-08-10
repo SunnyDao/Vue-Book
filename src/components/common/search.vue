@@ -2,7 +2,7 @@
 	<header class="p-search-header">
 		<div class="p-header-left p-header-sidebar">导</div>
 		<div class="p-header-center p-search-input">
-			<input type="search">
+			<input type="search" @focus="showSearchPage">
 		</div>
 		<div class="p-header-right p-search-btn">搜索</div>
 	</header>
@@ -14,6 +14,12 @@ export default {
 	data() {
 		return {
 
+		}
+	},
+	methods:{
+		showSearchPage(){
+			this.$emit('showSearchPage','测试测试')
+			this.$store.commit('SEARCH_SHOW_PAGE');
 		}
 	}
 }

@@ -2,7 +2,7 @@
   <div class="c-search-hot">
 	  <p class="w-title">热门搜索</p>
 	  <div class="w-hot-mark">
-		  <div class="item" v-for="(item,index) in hotlist" :key="index">
+		  <div class="item" v-for="(item,index) in hotData" :key="index">
 			  {{item.name}}
 		  </div>
 	  </div>
@@ -14,37 +14,9 @@ export default {
   name: 'hot-component',
 	data() {
 		return {
-			hotlist:[{
-				name:'1111'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			}]
 		}
-	}
+	},
+	props:['hotData']
 }
 </script>
 
@@ -60,10 +32,12 @@ export default {
 	.w-hot-mark{
 		display: flex;
 		flex-wrap: wrap;
+		align-content:flex-start;
+		justify-content: flex-start;
 		.item{
 			padding: 6px 10px;
 			font-size: 28px;/*px*/
-			margin: 10px 20px 10px 0;
+			margin: 10px 10px 10px 0;
 			background: #f2f2f2;
 		}
 	}

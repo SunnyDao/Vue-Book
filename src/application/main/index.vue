@@ -41,7 +41,7 @@ export default {
 			return this.$store.state.Page.isShowLoading
 		},
 		isShowSearch() {
-			return false;
+			return this.$store.state.Search.isShowSearchPage;
 		}
 	},
 };

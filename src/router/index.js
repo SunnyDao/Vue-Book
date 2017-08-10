@@ -65,8 +65,8 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 	const pageName = to.name;
 	store.commit('PAGE_SET_PAGENAME',pageName);
-	store.state[pageName].pageStatus === 0 && (store.commit('SHOW_LOADING'));
-	
+
+	store.state[pageName] && store.state[pageName].pageStatus === 0 && (store.commit('SHOW_LOADING'));
 	next();
 })
 

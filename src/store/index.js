@@ -6,6 +6,7 @@ import * as getters from './getters'
 
 import Page from './modules/page'
 import Home from './modules/home'
+import Search from './modules/search'
 import Catergry from './modules/catergry'
 
 import createLogger from '../plugins/logger'
@@ -18,7 +19,8 @@ export default new Vuex.Store({
 	modules: {
 		Page,
 		Home,
-		Catergry
+		Catergry,
+		Search
 	},
 	strict: debug,
 	plugins: debug

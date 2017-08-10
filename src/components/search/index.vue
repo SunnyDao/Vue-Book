@@ -7,7 +7,7 @@
 			</div>
 			<div class="c-header-right c-search-btn">搜索</div>
 		</header>
-		<hot-component></hot-component>
+		<hot-component :hotData="hotData"></hot-component>
 		<history-component></history-component>
 		<!-- <list-component></list-component> -->
 	</div>
@@ -21,13 +21,21 @@ export default {
 	name: 'search-component',
 	data() {
 		return {
-
+			
 		}
 	},
 	components: {
 		'hot-component': hot,
 		'history-component':history
 	},
+	created(){
+		this.$store.dispatch('SEARCH_GET_HOTDATA')
+	},
+	computed:{
+		hotData(){
+			return this.$store.state.Search.hotData;
+		}
+	}
 }
 </script>
 

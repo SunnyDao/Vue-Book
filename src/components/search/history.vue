@@ -10,40 +10,16 @@
 </template>
 
 <script>
+const storage = window.localStorage;
 export default {
   name: 'history-component',
 	data() {
 		return {
-			historylist:[{
-				name:'1111'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			},{
-				name:'111122'
-			}]
+
 		}
+	},
+	created(){
+		
 	}
 }
 </script>

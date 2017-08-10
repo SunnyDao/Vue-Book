@@ -1,6 +1,6 @@
 <template>
 	<div class="p-index">
-		<search-component></search-component>
+		<search-component @showSearchPage = "listenOnFocus"></search-component>
 		<swiper-component :bannerslist="banners" ref="swiper"></swiper-component>
 		<div class="p-index-nav">
 			<div class="p-nav-item" v-for="(item,index) in navlist" :key="index">
@@ -51,13 +51,18 @@ export default {
 			return this.$store.state.Home.navlist
 		},
 	},
+	created(){
+		this.$store.dispatch('HOME_GETINITDATA_ACTION');
+	},
 	mounted(){
 		setTimeout(()=>{
 			this.$refs.swiper.initSwiper();
 		},300)
 	},
-	created(){
-		this.$store.dispatch('HOME_GETINITDATA_ACTION');
+	methods:{
+		listenOnFocus(mes){
+			console.log(mes)
+		}
 	}
 };
 </script>
