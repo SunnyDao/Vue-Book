@@ -1,6 +1,8 @@
 <template>
 	<div class="main-page">
-		<router-view class="w-wrapper-content" v-if="!isShowSearch"></router-view>
+		<transition :name='transitionName'>
+			<router-view class="w-wrapper-content" v-if="!isShowSearch"></router-view>
+		</transition>
 		<div class="w-navbar-bottom" v-if="!isShowSearch">
 			<div class="tab-item item_0">
 				<router-link :to="{name:'Home'}" replace>首页</router-link>
@@ -29,6 +31,12 @@ import pagestatus from '~/common/pagestatus'
 import search from '~/search'
 export default {
 	name: 'main',
+	data(){
+		return {
+			transitionName: 'slide-left',
+			show:true
+		}
+	},
 	methods: {
 
 	},
@@ -44,10 +52,24 @@ export default {
 			return this.$store.state.Search.isShowSearchPage;
 		}
 	},
+	watch: {
+  		'$route'(to, from) {
+			const toDepth = to.path.split('/').length
+			const fromDepth = from.path.split('/').length
+			
+			this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+		}
+	}
 };
 </script>
 
 <style lang="scss" scoped>
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: opacity .5s
+}
+.slide-left-enter, .slide-left-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
+}
 $height:100px;
 .main-page {
 	position: relative;

@@ -1,7 +1,7 @@
 <template>
 	<div class="c-search-page">
 		<header class="c-search-header">
-			<div class="c-header-left c-header-sidebar">退</div>
+			<div class="c-header-left c-header-sidebar" @click="goBack">退</div>
 			<div class="c-header-center c-search-input">
 				<input type="search">
 			</div>
@@ -34,6 +34,11 @@ export default {
 	computed:{
 		hotData(){
 			return this.$store.state.Search.hotData;
+		}
+	},
+	methods:{
+		goBack(){
+			this.$store.commit('SEARCH_HIDE_PAGE')
 		}
 	}
 }

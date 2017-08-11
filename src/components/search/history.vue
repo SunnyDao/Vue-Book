@@ -1,5 +1,5 @@
 <template>
-  <div class="c-search-history">
+  <div class="c-search-history" v-if="historylist">
 	  <p class="w-title">历史搜索</p>
 	  <div class="w-history-list">
 		  <div class="item" v-for="(item,index) in historylist" :key="index">
@@ -18,8 +18,13 @@ export default {
 
 		}
 	},
+	computed:{
+		historylist(){
+			return storage.getItem('_history_');
+		}
+	},
 	created(){
-		
+		const historyData = storage.getItem('_history_');
 	}
 }
 </script>
