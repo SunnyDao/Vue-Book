@@ -34,6 +34,7 @@ export default {
 	data() {
 		return {
 			transitionName: 'slide-left',
+			map:{},
 			show: false
 		}
 	},
@@ -54,42 +55,14 @@ export default {
 	},
 	watch: {
 		'$route'(to, from) {
-			const toName = to.name;
-			const fromName = from.name;
-			let toValue;
-			let fromValue;
-
-			switch(toName){
-				case 'Home':
-					toValue = 1;
-					break;
-				case 'Catergry':
-					toValue = 2;
-					break;
-				case 'Find':
-					toValue = 3;
-					break;
-				case 'User':
-					toValue = 4;
-					break;
+			//根据进入时间的先后顺序来判断是前进还是后退
+			if (!this.map[to.name]) {
+				this.map[to.name] = +new Date() + 1;
 			}
-			switch(fromName){
-				case 'Home':
-					fromValue = 1;
-					break;
-				case 'Catergry':
-					fromValue = 2;
-					break;
-				case 'Find':
-					fromValue = 3;
-					break;
-				case 'User':
-					fromValue = 4;
-					break;
+			if (!this.map[from.name]) {
+				this.map[from.name] = +new Date();
 			}
-			
-			//debugger;
-			this.transitionName = toValue < fromValue ? 'slide-right' : 'slide-left'
+			this.transitionName = this.map[to.name] > this.map[from.name]?'slide-left':'slide-right';
 		}
 	}
 };
