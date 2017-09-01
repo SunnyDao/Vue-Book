@@ -52,11 +52,14 @@ export default {
 		},
 	},
 	created(){
-		this.$store.dispatch('HOME_GETINITDATA_ACTION');
+		this.$store.dispatch('HOME_GETINITDATA_ACTION',()=>{
+			this.$refs.swiper.initSwiper();
+			console.log('dispatch')
+		});
 	},
 	mounted(){
 		setTimeout(()=>{
-			this.$refs.swiper.initSwiper();
+			//this.$refs.swiper.initSwiper();
 		},300)
 	},
 	methods:{

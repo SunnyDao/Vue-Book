@@ -12,6 +12,7 @@ import User from '@/application/user'
 import Detail from '@/application/detail'
 import Goodslist from '@/application/goodslist'
 
+
 Vue.use(Router)
 
 const router = new Router({

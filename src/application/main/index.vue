@@ -31,10 +31,10 @@ import pagestatus from '~/common/pagestatus'
 import search from '~/search'
 export default {
 	name: 'main',
-	data(){
+	data() {
 		return {
 			transitionName: 'slide-left',
-			show:true
+			show: false
 		}
 	},
 	methods: {
@@ -53,32 +53,74 @@ export default {
 		}
 	},
 	watch: {
-  		'$route'(to, from) {
-			const toDepth = to.path.split('/').length
-			const fromDepth = from.path.split('/').length
+		'$route'(to, from) {
+			const toName = to.name;
+			const fromName = from.name;
+			let toValue;
+			let fromValue;
+
+			switch(toName){
+				case 'Home':
+					toValue = 1;
+					break;
+				case 'Catergry':
+					toValue = 2;
+					break;
+				case 'Find':
+					toValue = 3;
+					break;
+				case 'User':
+					toValue = 4;
+					break;
+			}
+			switch(fromName){
+				case 'Home':
+					fromValue = 1;
+					break;
+				case 'Catergry':
+					fromValue = 2;
+					break;
+				case 'Find':
+					fromValue = 3;
+					break;
+				case 'User':
+					fromValue = 4;
+					break;
+			}
 			
-			this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+			//debugger;
+			this.transitionName = toValue < fromValue ? 'slide-right' : 'slide-left'
 		}
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-.slide-left-enter-active, .slide-left-leave-active {
-  transition: opacity .5s
+.slide-right-enter,
+.slide-left-leave-active{
+	transform: translate3d(-100%, 0, 0);
 }
-.slide-left-enter, .slide-left-leave-to /* .fade-leave-active in below version 2.1.8 */ {
-  opacity: 0
+
+.slide-left-enter,
+.slide-right-leave-active{
+	transform: translate3d(100%, 0, 0);
 }
+
+
 $height:100px;
 .main-page {
 	position: relative;
 	height: 100%;
 	.w-wrapper-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 100%;
 		padding-bottom: $height;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
+		transition: all .3s ease-in-out;
 	}
 	.w-navbar-bottom {
 		position: fixed;
