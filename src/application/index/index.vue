@@ -54,7 +54,7 @@ export default {
 	created(){
 		this.$store.dispatch('HOME_GETINITDATA_ACTION',()=>{
 			this.$refs.swiper.initSwiper();
-			console.log('dispatch')
+			//console.log('dispatch')
 		});
 	},
 	mounted(){

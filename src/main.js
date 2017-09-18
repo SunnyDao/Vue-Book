@@ -8,11 +8,13 @@ import store from './store'
 import router from './router'
 
 import App from './application/App'
+import Loading from './plugins/loading'
 
 Vue.config.productionTip = false
 
 Vue.use(VueResource);
 Vue.use(VueLazyload)
+Vue.use(Loading)
 
 
 /* eslint-disable no-new */

@@ -1,7 +1,7 @@
 <template>
 	<div class="main-page">
 		<transition :name='transitionName'>
-			<router-view class="w-wrapper-content" v-if="!isShowSearch"></router-view>
+			<router-view class="w-wrapper-content" v-if="!isShowSearch" v-loading></router-view>
 		</transition>
 		<div class="w-navbar-bottom" v-if="!isShowSearch">
 			<div class="tab-item item_0">
@@ -93,7 +93,7 @@ $height:100px;
 		padding-bottom: $height;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
-		transition: all .3s ease-in-out;
+		transition: all .3s;
 	}
 	.w-navbar-bottom {
 		position: fixed;
